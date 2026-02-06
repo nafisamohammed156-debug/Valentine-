@@ -2,218 +2,180 @@
 <html lang="en">  
 <head>  
 <meta charset="UTF-8">  
+<title>Will You Be My Valentine?</title>  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>Asif Mustaffa ❤️</title>  
   
 <style>  
 body {  
   margin: 0;  
   height: 100vh;  
-  background: radial-gradient(circle at top, #ff9aa2, #ff4d6d);  
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);  
   display: flex;  
-  align-items: center;  
   justify-content: center;  
-  font-family: 'Georgia', serif;  
-  color: white;  
+  align-items: center;  
+  font-family: Georgia, serif;  
+  color: #5a0c2d;  
   text-align: center;  
-  overflow: hidden;  
+  transition: background 4s ease;  
 }  
   
-.card {  
-  background: rgba(255,255,255,0.2);  
-  padding: 45px;  
-  border-radius: 25px;  
-  max-width: 460px;  
-  box-shadow: 0 25px 60px rgba(0,0,0,0.35);  
-  backdrop-filter: blur(8px);  
-  animation: fadeIn 2s ease;  
+body.dim {  
+  background: linear-gradient(135deg, #2b0a18, #000000);  
+}  
+  
+#card {  
+  background: rgba(255,255,255,0.92);  
+  padding: 25px;  
+  border-radius: 20px;  
+  max-width: 360px;  
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);  
 }  
   
 h1 {  
-  font-size: 2.4rem;  
-}  
-  
-p {  
-  font-size: 1.15rem;  
-  line-height: 1.7;  
+  font-size: 26px;  
 }  
   
 button {  
-  padding: 14px 32px;  
-  border-radius: 30px;  
+  margin: 12px;  
+  padding: 10px 22px;  
+  font-size: 16px;  
+  border-radius: 20px;  
   border: none;  
   cursor: pointer;  
-  font-size: 1rem;  
-  margin: 10px;  
-  transition: 0.3s;  
-}  
-  
-button:hover {  
-  transform: scale(1.15);  
-}  
-  
-.yes {  
-  background: white;  
-  color: #ff4d6d;  
-  font-weight: bold;  
-}  
-  
-.no {  
-  background: transparent;  
-  border: 2px solid white;  
+  background: #c2185b;  
   color: white;  
 }  
   
-.hearts span {  
-  position: absolute;  
-  font-size: 22px;  
-  animation: float 8s infinite ease-in;  
+#typedText {  
+  font-size: 15px;  
+  line-height: 1.8;  
+  white-space: pre-line;  
 }  
   
-@keyframes fadeIn {  
-  from { opacity: 0; transform: translateY(40px); }  
-  to { opacity: 1; transform: translateY(0); }  
+.cursor {  
+  display: inline-block;  
+  animation: blink 1s infinite;  
 }  
   
-@keyframes float {  
-  0% { transform: translateY(110vh); opacity: 0; }  
-  50% { opacity: 1; }  
-  100% { transform: translateY(-10vh); opacity: 0; }  
+@keyframes blink {  
+  0%,50% {opacity:1;}  
+  51%,100% {opacity:0;}  
 }  
   
-/* HEART MERGE */  
+#finalQuestion {  
+  display: none;  
+  font-size: 18px;  
+  font-weight: bold;  
+  margin-top: 25px;  
+}  
+  
+#whisper, #finalLine {  
+  display: none;  
+  margin-top: 12px;  
+  font-style: italic;  
+  opacity: 0.75;  
+}  
+  
+/* Hearts */  
 .heart-merge {  
   position: relative;  
   width: 120px;  
   height: 60px;  
   margin: 30px auto 10px;  
+  display: none;  
 }  
   
 .heart {  
   position: absolute;  
-  font-size: 45px;  
+  font-size: 42px;  
   opacity: 0;  
 }  
   
 .heart.left {  
   left: 0;  
-  animation: moveLeft 4s forwards;  
+  animation: leftMove 4s forwards;  
 }  
   
 .heart.right {  
   right: 0;  
-  animation: moveRight 4s forwards;  
+  animation: rightMove 4s forwards;  
 }  
   
-@keyframes moveLeft {  
-  0% { opacity: 0; transform: translateX(0); }  
-  100% { opacity: 1; transform: translateX(35px) scale(1.2); }  
+@keyframes leftMove {  
+  0% {transform: translateX(0); opacity:0;}  
+  20% {opacity:1;}  
+  100% {transform: translateX(36px) scale(1.2); opacity:1;}  
 }  
   
-@keyframes moveRight {  
-  0% { opacity: 0; transform: translateX(0); }  
-  100% { opacity: 1; transform: translateX(-35px) scale(1.2); }  
+@keyframes rightMove {  
+  0% {transform: translateX(0); opacity:0;}  
+  20% {opacity:1;}  
+  100% {transform: translateX(-36px) scale(1.2); opacity:1;}  
 }  
   
-/* MERGED HEART GLOW */  
 .merged-heart {  
+  display: none;  
   font-size: 55px;  
-  opacity: 0;  
-  animation: pulseGlow 2.5s forwards 4s;  
-}  
-  
-@keyframes pulseGlow {  
-  0% {  
-    opacity: 0;  
-    transform: scale(0.6);  
-    text-shadow: 0 0 0 rgba(255,255,255,0);  
-  }  
-  60% {  
-    opacity: 1;  
-    transform: scale(1.3);  
-    text-shadow: 0 0 20px rgba(255,255,255,0.8);  
-  }  
-  100% {  
-    opacity: 1;  
-    transform: scale(1);  
-    text-shadow: 0 0 35px rgba(255,255,255,0.9);  
-  }  
-}  
-  
-.final-line {  
   margin-top: 10px;  
-  font-style: italic;  
-  opacity: 0;  
-  animation: fadeText 2s forwards 6s;  
+  text-shadow:  
+    0 0 10px rgba(255,80,120,0.8),  
+    0 0 20px rgba(255,80,120,0.8),  
+    0 0 30px rgba(255,80,120,0.8);  
 }  
   
-@keyframes fadeText {  
-  to { opacity: 0.9; }  
+/* Real heartbeat (lub–dub) */  
+.heartbeat {  
+  animation: heartbeat 1.4s infinite;  
 }  
   
-/* HIDDEN YOUTUBE PLAYER */  
-#player {  
-  width: 0;  
-  height: 0;  
-  opacity: 0;  
-  pointer-events: none;  
+@keyframes heartbeat {  
+  0% {transform: scale(1);}  
+  10% {transform: scale(1.18);}  
+  20% {transform: scale(1);}  
+  30% {transform: scale(1.12);}  
+  40% {transform: scale(1);}  
+  100% {transform: scale(1);}  
 }  
 </style>  
 </head>  
   
 <body>  
   
-<div id="player"></div>  
-  
-<div class="card" id="card">  
-  <h1>Asif Mustaffa 💕</h1>  
+<div id="card">  
+  <h1>Asif ❤️</h1>  
   <p>  
-    Between late-night calls,<br>  
-    quiet longing,<br>  
-    and all the miles between us…<br><br>  
-    I found something rare.<br>  
-    I found you.  
+    Miles apart, yet my heart finds its way to you every day.<br>  
+    So I have one question…  
   </p>  
-  
-  <h1>Will you be my Valentine? 💌</h1>  
-  
-  <button class="yes" onclick="sayYes()">Yes ❤️</button>  
-  <button class="no" onclick="moveNo()">No 😅</button>  
+  <h2>Will you be my Valentine?</h2>  
+  <button onclick="sayYes()">Yes 💖</button>  
 </div>  
   
-<div class="hearts"></div>  
+<!-- Hidden YouTube player -->  
+<iframe id="ytSong" width="0" height="0" frameborder="0" allow="autoplay"></iframe>  
   
 <script>  
 function sayYes() {  
-  // Play YouTube song after click  
-  document.getElementById("player").innerHTML = `  
-    <iframe  
-      src="https://www.youtube.com/embed/GX9x62kFsVU?autoplay=1&controls=0&loop=1&playlist=GX9x62kFsVU"  
-      frameborder="0"  
-      allow="autoplay"  
-    ></iframe>  
-  `;  
+  document.body.classList.add("dim");  
+  
+  document.getElementById("ytSong").src =  
+    "https://www.youtube.com/embed/GX9x62kFsVU?autoplay=1";  
+  
+  if (navigator.vibrate) {  
+    navigator.vibrate([200,100,200]);  
+  }  
   
   document.getElementById("card").innerHTML = `  
-    <h1>Gehra hua… ❤️</h1>  
+    <h1>For You, Asif ❤️</h1>  
+    <div id="typedText"></div><span class="cursor">▍</span>  
   
-    <p style="font-style: italic;">  
-      “Asif, hazaar meel ka safar bhi chhota lagta hai,<br>  
-      Jab dil har pal tum tak pahunch jaata hai.<br>  
-      Tumhara naam hi kaafi hai meri har kahani ke liye,<br>  
-      Har khamoshi mein bhi tum hi nazar aate ho.<br><br>  
+    <div id="finalQuestion">  
+      Will you be my Valentine,<br>  
+      and remain the one my heart aches for?  
+    </div>  
   
-      Hum door sahi, par dil ek hi dhadkan mein bandhe hain,<br>  
-      Yeh ishq waqt aur faaslon se kabhi nahi darta.<br>  
-      Mera har aaj, har kal tumse hi roshan hai,<br>  
-      Aur meri sabse khoobsurat mohabbat… tum ho.”  
-    </p>  
-  
-    <p style="font-style: italic; opacity: 0.85;">  
-      “Agar mohabbat ko ek awaaz milti,<br>  
-      toh woh sirf tumhara naam hota, Asif…<br>  
-      aur main tumhari hoon — aaj bhi, aur hamesha.”  
-    </p>  
+    <div id="whisper">“I want you… even from afar.”</div>  
+    <div id="finalLine">“Say yes… my heart already has.”</div>  
   
     <div class="heart-merge">  
       <div class="heart left">❤️</div>  
@@ -221,30 +183,66 @@ function sayYes() {
     </div>  
   
     <div class="merged-heart">❤️</div>  
-    <div class="final-line">Two hearts. One us.</div>  
   
-    <p style="margin-top: 15px; font-weight: bold;">  
+    <p id="signature" style="display:none; font-weight:bold; margin-top:15px;">  
       — Nafisa  
     </p>  
   `;  
-}  
   
-function moveNo() {  
-  const btn = document.querySelector(".no");  
-  btn.style.position = "absolute";  
-  btn.style.left = Math.random() * window.innerWidth + "px";  
-  btn.style.top = Math.random() * window.innerHeight + "px";  
-}  
+  const text = `  
+Asif,  
   
-const heartsContainer = document.querySelector(".hearts");  
-setInterval(() => {  
-  const h = document.createElement("span");  
-  h.innerHTML = "❤️";  
-  h.style.left = Math.random() * 100 + "vw";  
-  h.style.animationDuration = (Math.random() * 4 + 5) + "s";  
-  heartsContainer.appendChild(h);  
-  setTimeout(() => h.remove(), 8000);  
-}, 250);  
+Loving you from a distance has made my feelings louder,  
+deeper, and impossible to hide.  
+The space between us doesn’t weaken what I feel —  
+it sharpens it, intensifies it, makes it burn brighter.  
+  
+There are nights when I close my eyes  
+and imagine your presence so vividly  
+that my heart forgets we are miles apart.  
+I miss you fiercely, endlessly, completely.  
+  
+You are not just someone I love,  
+you are someone I long for.  
+My heart chooses you without hesitation,  
+and my soul recognizes you without doubt.  
+  
+Distance may keep our hands apart,  
+but it has no power over my heart.  
+It already belongs to you —  
+completely, unapologetically, and endlessly.  
+`;  
+  
+  let i = 0;  
+  const speed = 60;  
+  
+  function typeWriter() {  
+    if (i < text.length) {  
+      document.getElementById("typedText").innerHTML += text.charAt(i);  
+      i++;  
+      setTimeout(typeWriter, speed);  
+    } else {  
+      document.querySelector(".cursor").style.display = "none";  
+  
+      setTimeout(()=>document.getElementById("finalQuestion").style.display="block",1200);  
+      setTimeout(()=>document.getElementById("whisper").style.display="block",2200);  
+      setTimeout(()=>document.getElementById("finalLine").style.display="block",3200);  
+  
+      setTimeout(()=>{  
+        document.querySelector(".heart-merge").style.display="block";  
+        const heart=document.querySelector(".merged-heart");  
+        heart.style.display="block";  
+        heart.classList.add("heartbeat");  
+        document.getElementById("signature").style.display="block";  
+  
+        if (navigator.vibrate) {  
+          setInterval(()=>navigator.vibrate([120,80,90]),1400);  
+        }  
+      },4500);  
+    }  
+  }  
+  typeWriter();  
+}  
 </script>  
   
 </body>  
